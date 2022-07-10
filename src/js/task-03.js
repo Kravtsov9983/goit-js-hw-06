@@ -14,18 +14,25 @@ const images = [
 ];
 
 
-const foto = document.querySelector("ul")
-const article = `<li class = "list">
-        <img class = "fotos"  src="https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="White and Black Long Fur Cat">
-      </li>
-      <li class = "list">
-        <img class = "fotos"
-          src="https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          alt="Orange and White Koi Fish Near Yellow Koi Fish">
-      </li>
-      <li class = "list">
-        <img class = "fotos"
-          src="https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          alt="Group of Horses Running">
-      </li>`
-foto.insertAdjacentHTML("beforeend", article);
+const galleryItem = ({ url, alt }) =>
+  `<li><img src="${url}" alt="${alt}"></li>`;
+const galleryMarkup = images.reduce((acc, item) => acc + galleryItem(item), "");
+const galleryList = document.querySelector(".gallery");
+galleryList.insertAdjacentHTML("afterbegin", galleryMarkup);
+galleryList.setAttribute("style", "list-style-type:none; display: flex;");
+
+// const foto = document.querySelector("ul")
+// const article = `<li class = "list">
+//         <img class = "fotos"  src="https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="White and Black Long Fur Cat">
+//       </li>
+//       <li class = "list">
+//         <img class = "fotos"
+//           src="https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+//           alt="Orange and White Koi Fish Near Yellow Koi Fish">
+//       </li>
+//       <li class = "list">
+//         <img class = "fotos"
+//           src="https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+//           alt="Group of Horses Running">
+//       </li>`
+// foto.insertAdjacentHTML("beforeend", article);
